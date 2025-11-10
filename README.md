@@ -1,4 +1,4 @@
-# Voice Assistant with Gemini, Faster Whisper, and Porcupine (Console Version)
+# Voice Assistant with Gemini, Faster Whisper, and Porcupin
 
 This project implements a sophisticated voice assistant similar to JARVIS., running entirely on your local machine using Python, powered by **Google Gemini** for intelligence and **Faster Whisper** for transcription.
 
@@ -21,3 +21,5 @@ You must have **Python 3.9+** installed. This project relies on the following Py
 
 ```bash
 pip install -r requirements.txt
+```
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Sansation&letterSpacing=close&duration=3000&pause=1000&width=435&lines=Created+By+Galax!)](https://git.io/typing-svg)
