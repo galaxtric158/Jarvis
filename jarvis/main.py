@@ -10,14 +10,12 @@ import struct
 import pyttsx3
 import string
 import winsound
-# import serial # Removed PySerial
 
 from faster_whisper import WhisperModel
 from google import genai
 from google.genai import types
 
-# ──────────────────────────────────────────────
-# Load environment variables
+
 load_dotenv()
 try:
     client = genai.Client()
@@ -25,18 +23,6 @@ except Exception as e:
     print(f"Error initializing Gemini client: {e}")
     exit(1)
 
-# ──────────────────────────────────────────────
-# SERIAL DISPLAY CONFIGURATION (REMOVED)
-# ──────────────────────────────────────────────
-# SERIAL_PORT = os.getenv("ARDUINO_COM_PORT", 'COM3') 
-# BAUDRATE = int(os.getenv("SERIAL_BAUD", 115200))
-# arduino_serial = None 
-
-# def init_serial():
-#     """Initializes and returns the serial connection object."""
-#     # Functionality removed
-#     print("[Serial] Serial display functionality is disabled.")
-#     return None
 
 def send_display(text: str):
     """Placeholder for display function. Now prints to console."""
@@ -44,9 +30,7 @@ def send_display(text: str):
     # print(f"[DISPLAY] {text}")
     pass
 
-# init_serial() # Removed call to serial init
 
-# ──────────────────────────────────────────────
 # Whisper Model Initialization
 WHISPER_MODEL_SIZE = "base"
 print(f"[Whisper] Loading model: {WHISPER_MODEL_SIZE} (CPU)")
@@ -347,8 +331,6 @@ def handle_function_call(original_prompt: str, response: types.GenerateContentRe
 
 # ──────────────────────────────────────────────
 def main():
-    # Serial initialization removed.
-    # send_display("Jarvis started.") # Removed
     print("Jarvis started. Say 'Hey Jarvis' to wake me up.")
     
     while True:
@@ -360,17 +342,14 @@ def main():
         if not user_text:
             print("No command detected.")
             speak("I didn't catch that, sir.")
-            # send_display("Listening...") # Removed
             continue
         
         # 1. Display user input (Now only in console)
         user_display_text = f"YOU: {user_text}"
-        # send_display(user_display_text) # Removed
         print(f"[USER] {user_text}")
         time.sleep(1.0) # Shortened sleep since there is no display time requirement
         
         # 2. Process command
-        # send_display("Processing request...") # Removed
         print("Processing request...")
         time.sleep(1.0)
         
@@ -403,7 +382,4 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         print("Shutting down Jarvis...")
-        # send_display("Goodbye!") # Removed
-        # if arduino_serial and arduino_serial.is_open: # Removed
-        #     arduino_serial.close() # Removed
         time.sleep(1)
